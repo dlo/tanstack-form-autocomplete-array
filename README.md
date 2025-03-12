@@ -4,7 +4,9 @@ This is just a small example project that shows how to use TanStack Form coupled
 
 I'm not even sure if this is the "official" approach, but it works for me and it _should_ work for you too!
 
-The code you'll want to check out is at `src/routes/form.tsx`
+The code you'll want to check out is at `src/routes/form.tsx`. To demo it live, follow the setup instructions below, then navigate to "https://localhost:3000/form". Here's a little video of how this works.
+
+Obviously this is completely hacked together / unpolished (CSS, autocompletion code, etc. is all missing), but just wanted to share in case this could help someone else.
 
 Enjoy! The rest is just the default TanStack Router README.
 

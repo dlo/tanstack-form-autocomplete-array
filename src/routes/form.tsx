@@ -56,7 +56,7 @@ function RouteComponent() {
 
     <form.Field name={'people'} mode={'array'}>
       {(field) => (
-        <>
+        <center>
           <button
             onClick={() =>
               field.pushValue({
@@ -69,6 +69,7 @@ function RouteComponent() {
           >
             Add Person
           </button>
+          <br/>
           {field.state.value.map((_, i) => (
             <>
               <br />
@@ -131,9 +132,10 @@ function RouteComponent() {
                   </>
                 )}
               </form.Field>
+              <br/>
             </>
           ))}
-        </>
+        </center>
       )}
     </form.Field>
   </form>);
