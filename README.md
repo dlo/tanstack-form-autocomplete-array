@@ -6,6 +6,8 @@ I'm not even sure if this is the "official" approach, but it works for me and it
 
 The code you'll want to check out is at `src/routes/form.tsx`. To demo it live, follow the setup instructions below, then navigate to "https://localhost:3000/form". Here's a little video of how this works.
 
+https://github.com/user-attachments/assets/f586ec2c-fb9a-409a-9c15-7250ab636e80
+
 Obviously this is completely hacked together / unpolished (CSS, autocompletion code, etc. is all missing), but just wanted to share in case this could help someone else.
 
 Enjoy! The rest is just the default TanStack Router README.
