@@ -13,7 +13,7 @@ type Person = {
 
 const autocompletePlace = async (input: string): Promise<Array<string>> => {
   // TODO
-  return [];
+  return [input + '1', input + '2', input + '3'];
 };
 
 function RouteComponent() {
@@ -32,6 +32,7 @@ function RouteComponent() {
   const [autocompleteInput, setAutocompleteInput] = useState('');
   const [suggestions, setSuggestions] = useState<Array<string>>([]);
   const [activeAutocompleteIndex, setActiveAutocompleteIndex] = useState<number | null>(null);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
     if (!autocompleteInput || autocompleteInput.trim() === '') {
@@ -56,14 +57,28 @@ function RouteComponent() {
     <form.Field name={'people'} mode={'array'}>
       {(field) => (
         <>
+          <button
+            onClick={() =>
+              field.pushValue({
+                name: '',
+                location: '',
+              })
+            }
+            type="button"
+            className={'w-full'}
+          >
+            Add Person
+          </button>
           {field.state.value.map((_, i) => (
             <>
+              <br />
               <form.Field
                 key={`people[${i}].name`}
                 name={`people[${i}].name`}
               >
                 {(subField) => (
                   <input
+                    placeholder={'Name'}
                     name={subField.name}
                     value={subField.state.value}
                     onChange={(e) => subField.handleChange(e.target.value)}
@@ -74,16 +89,34 @@ function RouteComponent() {
               <form.Field
                 key={`people[${i}].location`}
                 name={`people[${i}].location`}
+                listeners={{
+                  onChange: ({ value }) => {
+                    setAutocompleteInput(value);
+                    setActiveAutocompleteIndex(i);
+                    if (value && value.trim() !== '') {
+                      setShowSuggestions(true);
+                    } else {
+                      setShowSuggestions(false);
+                    }
+                  },
+                  onBlur: () => {
+                    setTimeout(() => {
+                      setActiveAutocompleteIndex(null);
+                      setShowSuggestions(false);
+                    }, 200);
+                  },
+                }}
               >
                 {(subField) => (
                   <>
                     <input
+                      placeholder={'Location'}
                       name={subField.name}
                       value={subField.state.value}
                       onChange={(e) => subField.handleChange(e.target.value)}
                     />
 
-                    {activeAutocompleteIndex === i && suggestions.length > 0 && (
+                    {activeAutocompleteIndex === i && showSuggestions && suggestions.length > 0 && (
                       <div>
                         {suggestions.map((suggestion, i) => (
                           <div
