@@ -1,4 +1,14 @@
-# Welcome to TanStack.com!
+# tanstack-form-autocomplete-array
+
+This is just a small example project that shows how to use TanStack Form coupled with an array form and autocomplete for each item in the array.
+
+I'm not even sure if this is the "official" approach, but it works for me and it _should_ work for you too!
+
+The code you'll want to check out is at `src/routes/form.tsx`
+
+Enjoy! The rest is just the default TanStack Router README.
+
+---
 
 This site is built with TanStack Router!
 
